@@ -12,7 +12,7 @@ matrix = np.array([[7,8,9],
                     [4,12,11]])
 
 
-# Define Prewitt filter kernels
+# prewitt and sobel filter kernels
 prewitt_x = np.array([[-1, 0, 1],
                       [-1, 0, 1],
                       [-1, 0, 1]])
@@ -39,11 +39,10 @@ def apply_filter(matrix, kernel):
             filtered_matrix[i, j] = np.sum(matrix[i-1:i+2, j-1:j+2] * kernel)
     return filtered_matrix[1:-1, 1:-1]
 
-# Apply required filter
 prewitt_filtered_x = apply_filter(padded_matrix, prewitt_x)
 prewitt_filtered_y = apply_filter(padded_matrix, prewitt_y)
 
-# Calculate the gradient magnitude
+# calculate the gradient magnitude
 prewitt_gradient = np.sqrt(prewitt_filtered_x**2 + prewitt_filtered_y**2)
 
 print("Prewitt Filtered X:\n", prewitt_filtered_x)
